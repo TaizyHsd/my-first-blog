@@ -1,5 +1,7 @@
 *.pyc
 *~
+local_settings.py
+get_random_secret_key.py
 /.vscode
 __pycache__
 myvenv
