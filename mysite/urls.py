@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('blog.urls')),
 ]
+"""
+クライアント(ユーザー)がこちらのサイトのURLへアクセスする
+とき、http://127.0.0.1:8000/ はすべてblogへリダイレクトされ
+る（urlpatternsの2つ目）。http://127.0.0.1:8000/admin/ だっ
+た場合はadminのページへリダイレクトされる（urlpatternsの1つ目）。
+"""
