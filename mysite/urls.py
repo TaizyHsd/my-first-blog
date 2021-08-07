@@ -16,13 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from django.contrib.auth import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/login/', views.LoginView.as_view(), name='login'),
+    path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
     path('', include('blog.urls')),
 ]
 """
 クライアント(ユーザー)がこちらのサイトのURLへアクセスする
 とき、http://127.0.0.1:8000/ はすべてblogへリダイレクトされ
-る（urlpatternsの2つ目）。http://127.0.0.1:8000/admin/ だっ
+る（urlpatternsの3つ目）。http://127.0.0.1:8000/admin/ だっ
 た場合はadminのページへリダイレクトされる（urlpatternsの1つ目）。
 """
